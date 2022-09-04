@@ -23,8 +23,20 @@ $plugin->addEvent('request', 'before', function() {
   $link = filter_var($_GET["link"], FILTER_SANITIZE_STRING);
   
   if (!empty($user) && !empty($link)) {
-    file_put_contents('protected/sys/ShareLinks/' . rand(1, 9999999) . rand(1, 9999999), $user . '{//}' . $link);
+    $code = rand(1, 9999999) . rand(1, 9999999);
+    file_put_contents('protected/sys/ShareLinks/' . $code, $user . '{//}' . $link);
     header('Location: /u/' . $user . '/dashboard');
+    require "protected/components/header.php";
+?>
+  <h1>Link condiviso!</h1>
+  <br><br>
+  ID: <a onclick='copyurl()'><u>https://<?= $_SERVER['SERVER_NAME']; ?>/s/link/<?= $code; ?></u></a><br><br>
+  <script>
+  function copyurl() {
+    navigator.clipboard.writeText('https://<?= $_SERVER['SERVER_NAME']; ?>/s/link/<?= $code; ?>');
+  }
+  </script>
+<?php
   } else {
     die("ARGOM . MANC");
   }
