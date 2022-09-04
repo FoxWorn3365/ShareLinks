@@ -1,0 +1,16 @@
+{
+   "author":"FoxWorn3365",
+   "contributors":"FoxWorn3365",
+   "name":"ShareLinks",
+   "project_namespace":"FoxWorn3365.FoxCloudPlugins.ShareLinks",
+   "description":"ShareLinks ti permette di condividere link su FoxCloud",
+   "version":"0.7",
+   "enabled":true,
+   "phpVersion":"8.0",
+   "compatibility":{
+      "cloudVersions":[
+         "1.7"
+      ],
+   },
+   "type":"phar_plugin"
+}
