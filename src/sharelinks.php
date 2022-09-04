@@ -20,7 +20,7 @@ $plugin->addEvent('request', 'before', function() {
 $plugin->addEvent('request', 'before', function() {
   // Aggiungiamo il plugin
   $user = $_SESSION["user"];
-  $link = filter_var($_GET["link"], FILTER_SANITIZE_STRING);
+  $link = filter_var($_POST["link"], FILTER_SANITIZE_STRING);
   
   if (!empty($user) && !empty($link)) {
     $code = rand(1, 9999999) . rand(1, 9999999);
