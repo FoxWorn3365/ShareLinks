@@ -25,7 +25,6 @@ $plugin->addEvent('request', 'before', function() {
   if (!empty($user) && !empty($link)) {
     $code = rand(1, 9999999) . rand(1, 9999999);
     file_put_contents('protected/sys/ShareLinks/' . $code, $user . '{//}' . $link);
-    header('Location: /u/' . $user . '/dashboard');
     require "protected/components/header.php";
 ?>
   <h1>Link condiviso!</h1>
