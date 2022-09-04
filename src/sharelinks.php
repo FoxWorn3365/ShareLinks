@@ -14,5 +14,25 @@ $plugin->addEvent('request', 'before', function() {
    <button class='w3-button w3-orange w3-text-white'>Condividi</button>
   </form>
 <?php
-}, array('/u/' . $_SESSION['user'] . '/link'));
+ die();
+}, array('/u/%user%/link'));
 
+$plugin->addEvent('request', 'before', function() {
+  // Aggiungiamo il plugin
+  $user = $_SESSION["user"];
+  $link = filter_var($_GET["link"], FILTER_SANITIZE_STRING);
+  
+  if (!empty($user) && !empty($link)) {
+    file_put_contents('protected/sys/ShareLinks/' . rand(1, 9999999) . rand(1, 9999999), $user . '{//}' . $link);
+    header('Location: /u/' . $user . '/dashboard');
+  } else {
+    die("ARGOM . MANC");
+  }
+}, array('/admin/sharelinks/new'));
+
+$plugin->addEvent('containRequest', 'before', function() {
+  // Iniziamo con il richiedere gli header
+  $r = explode("/", $GLOBALS['url']);
+  $config = explode('{//}', file_get_contents('protected/sys/ShareLinks/' . end($r)));
+  header('Location: ' . $config[1]);
+}, array('/s/link/'));
