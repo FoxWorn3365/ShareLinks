@@ -10,3 +10,7 @@ Questo plugin per FoxCloud permette di condividere i link con gli amici
 ## Dipendenze
 - Richiede PHP7.4 o superiore
 - Richiede [FoxCloud](https://github.com/FoxWorn3365/Cloud) v1.7 o superiore
+
+## Uso
+Per condividere un link vai su `https://tuocloud.example.com/u/IlTuoAccount/link`<br>
+Per andare ad un link condiviso vai su `https://tuocloud.example.com/s/link/ILCodiceDelLink`
