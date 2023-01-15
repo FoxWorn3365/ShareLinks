@@ -10,8 +10,8 @@ $plugin->addEvent('request', 'before', function() {
   <h1>Condividi un link</h1>
   <br>
   <form method='post' action='/admin/sharelinks/new'>
-   <input type='text' name='link'><br><br>
-   <button class='w3-button w3-orange w3-text-white'>Condividi</button>
+   <input type='text' name='link' class='foxcloud-input'><br><br>
+   <button class='foxcloud-button'>Condividi</button>
   </form>
 <?php
  die();
@@ -36,6 +36,7 @@ $plugin->addEvent('request', 'before', function() {
   }
   </script>
 <?php
+    die();
   } else {
     die("ARGOM . MANC");
   }
@@ -46,4 +47,5 @@ $plugin->addEvent('containRequest', 'before', function() {
   $r = explode("/", $GLOBALS['url']);
   $config = explode('{//}', file_get_contents('protected/sys/ShareLinks/' . end($r)));
   header('Location: ' . $config[1]);
+  die();
 }, array('/s/link/'));
